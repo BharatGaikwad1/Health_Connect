@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const hospitalController_1 = require("../controllers/hospitalController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+router.get('/', hospitalController_1.getHospitals);
+router.get('/:id', hospitalController_1.getHospitalById);
+router.put('/:id', authMiddleware_1.authenticate, hospitalController_1.updateHospitalProfile);
+exports.default = router;
